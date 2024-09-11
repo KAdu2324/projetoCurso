@@ -8,9 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.educaweb.course.entities.Category;
 import com.educaweb.course.entities.Order;
 import com.educaweb.course.entities.User;
 import com.educaweb.course.entities.enums.OrderStatus;
+import com.educaweb.course.repositories.CategoryRepository;
 import com.educaweb.course.repositories.OrderRepository;
 import com.educaweb.course.repositories.UserRepository;
 
@@ -22,10 +24,19 @@ public class TestConfig implements CommandLineRunner{
 	@Autowired
 	private OrderRepository orderRepository;
 	
+	@Autowired
+	private CategoryRepository categoryRepository;
 	
 
 	@Override
 	public void run(String... args) throws Exception {
+		
+		Category cat1 = new Category(null, "Electronics");
+		Category cat2 = new Category(null, "Books");
+		Category cat3 = new Category(null, "Computers");
+		
+		categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+		
 		User u1 = new User(null,"Maria Joaquina", "maria@gmail.com","9888888","123456");
 		User u2 = new User(null,"Valdevino João", "joao@gmail.com","98665","987654");
 
@@ -33,8 +44,10 @@ public class TestConfig implements CommandLineRunner{
 		Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"),OrderStatus.WAITING_PAYMENT,  u2);
 		Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"),OrderStatus.WAITING_PAYMENT, u1); 
 		
+		
 		userRepository.saveAll(Arrays.asList(u1,u2));
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3));
+		
 	
 	}
 	
