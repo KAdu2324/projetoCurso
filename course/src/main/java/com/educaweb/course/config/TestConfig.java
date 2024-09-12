@@ -25,7 +25,6 @@ public class TestConfig implements CommandLineRunner{
 	private UserRepository userRepository;
 	@Autowired
 	private OrderRepository orderRepository;
-	
 	@Autowired
 	private CategoryRepository categoryRepository;
 	@Autowired
@@ -46,6 +45,17 @@ public class TestConfig implements CommandLineRunner{
 
 		categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
 		productRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
+		
+		
+		p1.getCategories().add(cat2);
+		p2.getCategories().add(cat1);
+		p2.getCategories().add(cat3);
+		p3.getCategories().add(cat3);
+		p4.getCategories().add(cat3);
+		p5.getCategories().add(cat2);
+		
+		productRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
+		
 
 		
 		User u1 = new User(null,"Maria Joaquina", "maria@gmail.com","9888888","123456");
