@@ -3,7 +3,6 @@ package com.educaweb.course.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.educaweb.course.entities.pk.OrderItemPk;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.EmbeddedId;

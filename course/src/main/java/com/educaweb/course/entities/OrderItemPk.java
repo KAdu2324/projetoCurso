@@ -1,10 +1,7 @@
-package com.educaweb.course.entities.pk;
+package com.educaweb.course.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
-
-import com.educaweb.course.entities.Order;
-import com.educaweb.course.entities.Product;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
